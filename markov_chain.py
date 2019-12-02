@@ -1,7 +1,11 @@
-"""
-Note: A different Markov Chain object should be created for each and every key signature to avoid disharmony.
-This will also allow the user to select a key signature before generating a piece.
-"""
+import random
 
 class MarkovChain:
-    pass
+    def __init__(self, midi_file):
+        pass
+
+    def sample(self):
+        pass
+
+    def generate_file(self):
+        pass
