@@ -2,7 +2,7 @@ from random import choice
 from memory import Memory
 
 class MarkovModel(dict):
-    """ Dictionary based markov model """
+    """ Dictionary based nth order markov model """
 
     def __init__(self, midi_track=None, order=1):
         # init_memory used for initializing markov model and adding states
@@ -15,6 +15,7 @@ class MarkovModel(dict):
             self.add_state(message)
 
     def add_state(self, new_state):
+        """ Add a state to markov model and add new state to init_memory """
         current_state = self.init_memory.serialize()
         
         if current_state in self:
@@ -23,14 +24,11 @@ class MarkovModel(dict):
             self[current_state] = [new_state]
 
         self.init_memory.enqueue(new_state)
-        
-    def sample(self, current_state):
-        return choice(self[current_state])
 
-    def nsample(self, N, starting_state=tuple()):
+    def sample(self, N=1, starting_state=tuple()):
         """ Return generator from sampling N times from markov model """
         for _ in range(N):
-            next_state = self.sample(starting_state)
+            next_state = choice(self[starting_state])
             self.memory.enqueue(next_state)
             yield next_state
             starting_state = self.memory.serialize()
@@ -38,5 +36,5 @@ class MarkovModel(dict):
 midi_track = ['you', 'go', 'left', 'i', 'go', 'left', 'you', 'go', 'left', 'i', 'go', 'right']
 
 x = MarkovModel(midi_track=midi_track, order=2)
-for message in x.nsample(100):
+for message in x.sample(100):
     print(message)
