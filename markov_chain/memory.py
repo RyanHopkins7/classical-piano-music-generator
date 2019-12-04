@@ -9,11 +9,15 @@ class Memory:
     def __init__(self, order=1):
         self.head = None
         self.tail = None
-
-        for i in range(order):
-            self.enqueue(i)
+        self.order = order
+        self.length = 0
 
     def enqueue(self, data=None):
+        """ Add a node to the start of the queue with data. Length will never exceed order. """
+        self.length += 1
+        if self.length > self.order:
+            self.dequeue()
+
         if self.head is None:
             self.head = Node(data=data)
             self.tail = self.head
@@ -23,8 +27,9 @@ class Memory:
             self.tail = new_node
 
     def dequeue(self):
-        """ It is not necessary to return node's value due to implementation """
+        """ Remove a node from the end of the queue. Returning is not necessary due to implementation. """
         if self.head is not None:
+            self.length -= 1
             self.head = self.head.next
             if self.head is None:
                 self.tail = None
