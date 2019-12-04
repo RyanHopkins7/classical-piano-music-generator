@@ -1,20 +1,42 @@
-import random
+from random import choice
 from memory import Memory
 
-class MarkovChain:
-    def __init__(self, midi_file=None, order=1):
-        self.memory = Memory(order=order)
+class MarkovModel(dict):
+    """ Dictionary based markov model """
 
-        for i in range(10):
-            self.memory.enqueue(i)
+    def __init__(self, midi_track=None, order=1):
+        # init_memory used for initializing markov model and adding states
+        self.init_memory = Memory(order)
+        # memory used for sampling from markov model
+        self.memory = Memory(order)
 
-        for node in self.memory:
-            print(node.data)
+        # Adding states spliced before order allows model to loop to beginning once the end is reached when sampling
+        for message in midi_track + midi_track[:order]:
+            self.add_state(message)
 
-    def sample(self):
-        pass
+    def add_state(self, new_state):
+        current_state = self.init_memory.serialize()
+        
+        if current_state in self:
+            self[current_state].append(new_state)
+        else:
+            self[current_state] = [new_state]
 
-    def generate_file(self):
-        pass
+        self.init_memory.enqueue(new_state)
+        
+    def sample(self, current_state):
+        return choice(self[current_state])
 
-x = MarkovChain(order=5)
+    def nsample(self, N, starting_state=tuple()):
+        """ Return generator from sampling N times from markov model """
+        for _ in range(N):
+            next_state = self.sample(starting_state)
+            self.memory.enqueue(next_state)
+            yield next_state
+            starting_state = self.memory.serialize()
+
+midi_track = ['you', 'go', 'left', 'i', 'go', 'left', 'you', 'go', 'left', 'i', 'go', 'right']
+
+x = MarkovModel(midi_track=midi_track, order=2)
+for message in x.nsample(100):
+    print(message)
