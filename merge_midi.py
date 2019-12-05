@@ -1,5 +1,6 @@
 """
 Credit to m13253 (Star Brilliant) on GitHub
+Merges multi track midi files from dataset into dataset of single track midi files
 """
 
 import struct
