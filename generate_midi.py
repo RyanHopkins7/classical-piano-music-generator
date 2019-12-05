@@ -3,13 +3,13 @@ from mido import Message, MidiFile, MidiTrack
 from markov_chain.markov_model import MarkovModel
 from os import listdir
 
-corpus_files = (MidiFile(f'music/eflat_major/{file_name}', clip=True) for file_name in listdir('music/eflat_major'))
+corpus_files = (MidiFile(f'music/{file_name}', clip=True) for file_name in listdir('music'))
 
 # lol 
 messages = (message for f in corpus_files for track in f.tracks[1:3] for message in track)
 
 # TODO: Make markov model init work with a generator not just a list
-mkv = MarkovModel(midi_track=list(messages), order=3)
+mkv = MarkovModel(midi_track=list(messages), order=4)
 
 # Type 0 single track file
 gen_midi = MidiFile(type=0)
