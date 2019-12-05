@@ -40,10 +40,11 @@ class Memory:
         """ Clear memory """
         self.head = None
         self.tail = None
+        self.length = 0
 
     def serialize(self):
-        """ Serializes memory queue in the form of a tuple, making it hashable """
-        return tuple(node.state for node in self)
+        """ Serializes memory queue in the form of a tuple of strings, making it hashable """
+        return tuple(str(node.state) for node in self)
 
     def __len__(self):
         return self.length

@@ -13,3 +13,5 @@ can always contain enough information to always make decisions about future note
 
 Necessary to read notes from all tracks and save data in the same markov chain.
 
+Use a first order, second order, third order, up to tenth order Markov Chain and choose which one to sample from 
+based on weighting. Weighting should be based off of delta time.

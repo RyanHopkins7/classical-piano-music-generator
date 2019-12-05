@@ -1,10 +1,13 @@
 from random import choice
-from memory import Memory
+try:
+    from markov_chain.memory import Memory, Node
+except ModuleNotFoundError:
+    from memory import Memory, Node
 
 class MarkovModel(dict):
     """ Dictionary based nth order markov model """
 
-    def __init__(self, midi_track=None, order=1):
+    def __init__(self, midi_track=[], order=1):
         # init_memory used for initializing markov model and adding states
         self.init_memory = Memory(order)
         # memory used for sampling from markov model
@@ -32,9 +35,5 @@ class MarkovModel(dict):
             self.memory.enqueue(next_state)
             yield next_state
             starting_state = self.memory.serialize()
+        self.memory.clear()
 
-midi_track = ['you', 'go', 'left', 'i', 'go', 'left', 'you', 'go', 'left', 'i', 'go', 'right']
-
-x = MarkovModel(midi_track=midi_track, order=2)
-for message in x.sample(100):
-    print(message)

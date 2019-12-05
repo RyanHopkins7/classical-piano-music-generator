@@ -1,14 +1,20 @@
+import mido
 from mido import Message, MidiFile, MidiTrack
+from markov_chain.markov_model import MarkovModel
+
+corpus_file = MidiFile('music/eflat_major/chp_op18.mid', clip=True)
+messages = (message for track in corpus_file.tracks for message in track)
+
+# TODO: Make markov model init work with a generator not just a list
+mkv = MarkovModel(midi_track=list(messages), order=2)
 
 # Type 0 single track file
-mid = MidiFile(type=0)
+gen_midi = MidiFile(type=0)
 track = MidiTrack()
-mid.tracks.append(track)
+gen_midi.tracks.append(track)
 
-track.append(Message('program_change', program=12, time=0))
-track.append(Message('note_on', note=64, velocity=64, time=32))
-track.append(Message('note_off', note=64, velocity=127, time=32))
+for message in mkv.sample(10000):
+    # print(message)
+    track.append(message)
 
-
-
-mid.save('new_song.mid')
+gen_midi.save('generated.mid')
