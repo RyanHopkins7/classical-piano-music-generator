@@ -8,5 +8,7 @@ document.getElementById('generateMidi').addEventListener('click', function () {
             alert(http.responseText);
         }
     }
-    http.send('order=4');
+
+    let order = document.getElementById('order').value;
+    http.send('order=' + order);
 })

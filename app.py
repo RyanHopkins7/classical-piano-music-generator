@@ -3,6 +3,11 @@ from generate_midi import generate_midi
 
 app = Flask(__name__)
 
+"""
+Note: If more than one person is expected to use this site at a time, sessions will need to be implemented
+to prevent specific users' generated files from overwriting other users' generated files
+"""
+
 @app.route('/')
 def index():
     ''' Display home page '''

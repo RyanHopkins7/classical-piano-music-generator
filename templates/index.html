@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <button onClick="MIDIjs.play('static/generated.mid');">Play generated.mid</button>
-    <button onClick="MIDIjs.stop();">Stop MIDI Playback</button>
-    <button id="generateMidi">Generate new MIDI file</button>
+
+<div id="orderForm">
+    <div class="form-group">
+        <label for="order">Markov Model order</label>
+        <select class="form-control" id="order" value="4">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option selected="selected">4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+        </select>
+    </div>
+    <button type="submit" id="generateMidi" class="btn btn-primary">Generate new MIDI file</button>
+</div>
+
+<button class="btn btn-secondary" onClick="MIDIjs.play('static/generated.mid');">Play generated.mid</button>
+<button class="btn btn-secondary" onClick="MIDIjs.stop();">Stop MIDI Playback</button>
+
 {% endblock %}

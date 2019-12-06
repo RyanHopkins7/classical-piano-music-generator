@@ -13,6 +13,7 @@ def generate_midi(mkv_order=1, num_messages=10000):
     """
     corpus_files = (MidiFile(f'music/single_track/{file_name}', clip=True) for file_name in listdir('music/single_track'))
 
+    # TODO: Add a stop token after the end of each file. Sample until a stop token is reached
     messages = (message for f in corpus_files for message in f.tracks[0])
 
     # TODO: Make markov model init work with a generator not just a list
