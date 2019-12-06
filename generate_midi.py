@@ -13,12 +13,9 @@ def generate_midi(mkv_order=4):
     """
     corpus_files = (MidiFile(f'music/single_track/{file_name}', clip=True) for file_name in listdir('music/single_track'))
 
-    # False is the ending state
-    # TODO: Add starting states as well as ending states
-    messages = (message for f in corpus_files for message in f.tracks[0] + ['END'])
+    messages = (message for f in corpus_files for message in ['START'] + f.tracks[0] + ['END'])
 
-    # TODO: Make markov model init work with a generator not just a list
-    mkv = MarkovModel(midi_track=list(messages), order=mkv_order)
+    mkv = MarkovModel(midi_track=messages, order=mkv_order)
 
     # Type 0 single track file
     gen_midi = MidiFile(type=0)
@@ -27,6 +24,12 @@ def generate_midi(mkv_order=4):
 
     for message in mkv.sample():
         track.append(message)
+
+    """
+    TODO: use a global counter and add it to the file name for each newly generated file.
+    After X files are generated, delete the last one to prevent too much space from being taken up.
+    This should avoid the need for sessions and also get rid of the caching issue.
+    """
 
     gen_midi.save('static/generated.mid')
 
