@@ -31,8 +31,9 @@ class MarkovModel(dict):
 
         self.memory.enqueue(new_state)
 
-    def sample(self, starting_state=('START',)):
+    def sample(self):
         """ Return generator from sampling from markov model until an end state is reached """
+        starting_state = ('START',)
         while True:
             next_state = choice(self[starting_state])
             self.memory.enqueue(next_state)

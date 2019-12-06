@@ -8,6 +8,8 @@ Note: If more than one person is expected to use this site at a time, sessions w
 to prevent specific users' generated files from overwriting other users' generated files
 """
 
+# TODO: Generate markov chains of orders 1 - 8 to sample from at app initialization to improve speed
+
 @app.route('/')
 def index():
     ''' Display home page '''
