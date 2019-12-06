@@ -12,6 +12,8 @@ class Memory:
         self.order = order
         self.length = 0
 
+        self.enqueue('START')
+
     def enqueue(self, state=None):
         """ Add a node to the start of the queue with data memory. Length will never exceed order """
         self.length += 1

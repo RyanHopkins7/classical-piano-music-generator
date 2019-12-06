@@ -12,3 +12,11 @@ document.getElementById('generateMidi').addEventListener('click', function () {
     let order = document.getElementById('order').value;
     http.send('order=' + order);
 })
+
+document.getElementById('playMIDI').addEventListener('click', function () {
+    MIDIjs.play('static/generated.mid');
+})
+
+document.getElementById('stopMIDI').addEventListener('click', function () {
+    MIDIjs.stop();
+})

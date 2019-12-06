@@ -3,7 +3,7 @@ from mido import Message, MidiFile, MidiTrack
 from markov_chain.markov_model import MarkovModel
 from os import listdir
 
-def generate_midi(mkv_order=1, num_messages=10000):
+def generate_midi(mkv_order=4):
     """
     Generates and saves a midi file using an Nth order markov chain trained on midi files from music/single_track.
     Generated midi file is saved in music/generated.mid.
@@ -13,8 +13,9 @@ def generate_midi(mkv_order=1, num_messages=10000):
     """
     corpus_files = (MidiFile(f'music/single_track/{file_name}', clip=True) for file_name in listdir('music/single_track'))
 
-    # TODO: Add a stop token after the end of each file. Sample until a stop token is reached
-    messages = (message for f in corpus_files for message in f.tracks[0])
+    # False is the ending state
+    # TODO: Add starting states as well as ending states
+    messages = (message for f in corpus_files for message in f.tracks[0] + ['END'])
 
     # TODO: Make markov model init work with a generator not just a list
     mkv = MarkovModel(midi_track=list(messages), order=mkv_order)
@@ -24,7 +25,7 @@ def generate_midi(mkv_order=1, num_messages=10000):
     track = MidiTrack()
     gen_midi.tracks.append(track)
 
-    for message in mkv.sample(num_messages):
+    for message in mkv.sample():
         track.append(message)
 
     gen_midi.save('static/generated.mid')

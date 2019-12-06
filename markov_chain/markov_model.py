@@ -28,12 +28,16 @@ class MarkovModel(dict):
 
         self.init_memory.enqueue(new_state)
 
-    def sample(self, N=1, starting_state=tuple()):
-        """ Return generator from sampling N times from markov model """
-        for _ in range(N):
+    def sample(self, starting_state=('START',)):
+        """ Return generator from sampling from markov model until an end state is reached """
+        while True:
             next_state = choice(self[starting_state])
             self.memory.enqueue(next_state)
-            yield next_state
+            # Continue yielding until an end state is reached
+            if not isinstance(next_state, str):
+                yield next_state
+            else:
+                break
             starting_state = self.memory.serialize()
         self.memory.clear()
 
