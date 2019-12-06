@@ -26,7 +26,7 @@ def generate_midi(mkv_order=1, num_messages=10000):
     for message in mkv.sample(num_messages):
         track.append(message)
 
-    gen_midi.save('music/generated.mid')
+    gen_midi.save('static/generated.mid')
 
 if __name__ == "__main__":
     generate_midi(mkv_order=4)

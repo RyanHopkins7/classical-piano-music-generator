@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <p>Music</p>
+    <button onClick="MIDIjs.play('static/generated.mid');">Play generated.mid</button>
+    <button onClick="MIDIjs.stop();">Stop MIDI Playback</button>
+    <button id="generateMidi">Generate new MIDI file</button>
 {% endblock %}

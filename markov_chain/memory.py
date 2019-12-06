@@ -1,9 +1,7 @@
 class Node:
-    def __init__(self, state=None, next_node=None, decay=1):
+    def __init__(self, state=None, next_node=None):
         self.state = state
         self.next = next_node
-        # Decay factor calculated using delta time. Will affect likelihood that specific node is used for sampling
-        self.decay = decay
 
 class Memory:
     """ Memory buffer implemented as a linked list based queue for MarkovChain's higher order functionality """    
