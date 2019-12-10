@@ -38,4 +38,8 @@ To run the Flask app, run `python3 app.py` and visit [127.0.0.1:5000](http://127
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+## Acknowledgements
+
+Training music from [www.piano-midi.de](http://www.piano-midi.de/)
+merge_midi_tracks.py from [Star Brilliant](https://github.com/m13253)
 
