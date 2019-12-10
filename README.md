@@ -24,25 +24,18 @@ This is a Python 3 project and requires the latest version of Python and a virtu
 
 ### Adding midi files to training_music
 
-1. Add multi-track midi files to training_music/multi_track.
+1. Add multi-track midi files to *training_music/multi_track*.
 
-2. Run 'python3 merge_midi_tracks.py merge_dataset' to merge all midi files from training_music/multi_track from multi track midi files to single track midi files and save them in training_music/single_track. It is necessary for midi music to be single track for them to train the Markov model. 
+2. Run `python3 merge_midi_tracks.py merge_dataset` to merge all midi files from *training_music/multi_track* from multi track midi files to single track midi files and save them in *training_music/single_track*. It is necessary for midi files to be single track for them to train the Markov model. 
 
 ### Running the code
 
-## Built With
+To generate a midi file from the training music, run `python3 generate_midi.py <order>` where order is the order of the markov model that should be used to generate the music. The resulting midi file is stored in *static/generated.mid*.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+To run the Flask app, run `python3 app.py` and visit [127.0.0.1:5000](http://127.0.0.1:5000/). It is currently necessary to disable your browser cache in order for the generated midi file to be updated each time a new midi file is generated.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
