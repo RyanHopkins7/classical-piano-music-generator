@@ -40,6 +40,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgements
 
-Training music from [www.piano-midi.de](http://www.piano-midi.de/)
-merge_midi_tracks.py from [Star Brilliant](https://github.com/m13253)
+* Training music from [www.piano-midi.de](http://www.piano-midi.de/)
+* merge_midi_tracks.py from [Star Brilliant](https://github.com/m13253)
 
