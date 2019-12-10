@@ -3,7 +3,7 @@
 This application generates piano music in midi form using an nth order Markov model trained off of classical piano music.
 A Flask web app is included as a simple interface to generate musical pieces using Markov models of order 1 through 8. 
 
-Composers currently in corpus data: Chopin, Beethoven.
+Composers currently in corpus data: **Chopin, Beethoven.**
 
 ## Getting Started
 
