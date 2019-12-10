@@ -17,6 +17,10 @@
         </select>
     </div>
     <button type="submit" id="generateMidi" class="btn btn-primary">Generate new MIDI file</button>
+    <div id="loading" class="hidden">
+        <p>Generating music...</p>
+        <img src="static/images/loading.gif">
+    </div>
 </div>
 
 <!-- ISSUE: Last midi file tends to get cached so when generating another midi the file isn't updated -->

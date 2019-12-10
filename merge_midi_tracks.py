@@ -163,9 +163,9 @@ def main(fnin, fnout):
 if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1] == "merge_dataset":
         print('Merging dataset tracks')
-        files = listdir('music/multi_track/')
+        files = listdir('training_music/multi_track/')
         for i, file_name in enumerate(files):
-            main(f'music/multi_track/{file_name}', f'music/single_track/{file_name}')
+            main(f'training_music/multi_track/{file_name}', f'training_music/single_track/{file_name}')
             print(f'Merged {i+1} / {len(files)}')
         sys.exit(1)
     elif len(sys.argv) != 3:

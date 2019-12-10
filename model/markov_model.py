@@ -1,6 +1,6 @@
 from random import choice
 try:
-    from markov_chain.memory import Memory, Node
+    from model.memory import Memory, Node
 except ModuleNotFoundError:
     from memory import Memory, Node
 

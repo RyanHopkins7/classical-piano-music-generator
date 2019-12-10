@@ -5,3 +5,7 @@
 .range-label {
     display: inline;
 }
+
+.hidden {
+    display: none;
+}

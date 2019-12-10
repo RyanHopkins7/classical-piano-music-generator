@@ -8,7 +8,7 @@ Note: If more than one person is expected to use this site at a time, sessions w
 to prevent specific users' generated files from overwriting other users' generated files
 """
 
-# TODO: Generate markov chains of orders 1 - 8 to sample from at app initialization to improve speed
+# TODO: save markov models of orders 1 - 8 and load at start of app to improve speed
 
 @app.route('/')
 def index():
@@ -23,4 +23,4 @@ def generate_midi_route():
     return Response("Finished generating new MIDI file")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port='5000', debug=True)
