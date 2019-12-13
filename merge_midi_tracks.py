@@ -161,19 +161,18 @@ def main(fnin, fnout):
     fout.close()
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2 and sys.argv[1] == "merge_dataset":
-        print('Merging dataset tracks')
-        files = listdir('training_music/multi_track/')
-        for i, file_name in enumerate(files):
-            main(f'training_music/multi_track/{file_name}', f'training_music/single_track/{file_name}')
-            print(f'Merged {i+1} / {len(files)}')
-        sys.exit(1)
-    elif len(sys.argv) != 3:
-        sys.stderr.write('Usage: %s input.mid output.mid\n\n' % sys.argv[0])
+    if len(sys.argv) != 3:
+        sys.stderr.write(f'Usage: {sys.argv[0]} input_midi_directory output_midi_directory\n\n')
         sys.exit(1)
     else:
         try:
-            sys.exit(main(sys.argv[1], sys.argv[2]))
+            print('Merging dataset tracks')
+            input_dir, output_dir = sys.argv[1], sys.argv[2]
+            files = listdir(input_dir)
+            for i, file_name in enumerate(files):
+                main(f'{input_dir}/{file_name}', f'{output_dir}/{file_name}')
+                print(f'Merged {i+1} / {len(files)}')
+            sys.exit(1)
         except Exception as e:
             raise
             sys.stderr.write('Error: %s %s\n' % (type(e).__name__, e))
