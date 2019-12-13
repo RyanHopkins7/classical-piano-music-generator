@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, send_file
 from generate_midi import generate_midi
 
 app = Flask(__name__)
@@ -21,6 +21,11 @@ def generate_midi_route():
     order = int(request.form['order'])
     generate_midi(mkv_order=order)
     return Response("Finished generating new MIDI file")
+
+@app.route('/serve-midi')
+def serve_midi():
+    ''' Serve most recently generated midi file '''
+    return send_file('generated.mid')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port='5000', debug=True)

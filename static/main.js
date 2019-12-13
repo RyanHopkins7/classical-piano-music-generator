@@ -16,7 +16,7 @@ document.getElementById('generateMidi').addEventListener('click', function () {
 })
 
 document.getElementById('playMIDI').addEventListener('click', function () {
-    MIDIjs.play('static/generated.mid');
+    MIDIjs.play('/serve-midi?t=' + Date.now());
 })
 
 document.getElementById('stopMIDI').addEventListener('click', function () {

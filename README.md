@@ -32,7 +32,7 @@ This is a Python 3 project and requires the latest version of Python and a virtu
 
 To generate a midi file from the training music, run `generate_midi.py <order>` where order is the order of the markov model that should be used to generate the music. The resulting midi file is stored in *static/generated.mid*.
 
-To run the Flask app, run `app.py` and visit [127.0.0.1:5000](http://127.0.0.1:5000/). It is currently necessary to disable your browser cache in order for the generated midi file to be updated each time a new midi file is generated.
+To run the Flask app, run `app.py` and visit [127.0.0.1:5000](http://127.0.0.1:5000/). 
 
 ## License
 
