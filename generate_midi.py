@@ -26,10 +26,6 @@ def generate_midi(mkv_order=4):
     for message in mkv.sample():
         track.append(message)
 
-    """
-    ISSUE: generated midi files get cached by javascript web audio and don't update
-    """
-
     gen_midi.save('generated.mid')
 
 if __name__ == "__main__":

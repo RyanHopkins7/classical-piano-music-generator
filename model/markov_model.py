@@ -1,8 +1,5 @@
 from random import choice
-try:
-    from model.memory import Memory, Node
-except ModuleNotFoundError:
-    from memory import Memory, Node
+from .memory import Memory
 
 class MarkovModel(dict):
     """ Dictionary based nth order markov model """
