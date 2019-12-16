@@ -4,7 +4,7 @@ class Node:
         self.next = next_node
 
 class Memory:
-    """ Memory buffer implemented as a linked list based queue for MarkovChain's higher order functionality """    
+    """ Memory circular buffer implemented as a linked list based queue for MarkovModel's higher order functionality """    
 
     def __init__(self, order=1):
         self.head = None
@@ -13,7 +13,7 @@ class Memory:
         self.length = 0
 
     def enqueue(self, state=None):
-        """ Add a node to the start of the queue with data memory. Length will never exceed order """
+        """ Add a node to the start of the queue with state. Length will never exceed order """
         self.length += 1
         if self.length > self.order:
             self.dequeue()
