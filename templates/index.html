@@ -2,29 +2,33 @@
 
 {% block body %}
 
-<div id="orderForm">
-    <div class="form-group">
-        <label for="order">Markov Model order</label>
-        <select class="form-control" id="order" value="4">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option selected="selected">4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-        </select>
+<div id="orderForm" class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="order">Markov Model order</label>
+            <select class="form-control" id="order" value="4">
+                <option>1</option>
+                <option>2</option>
+                <option selected="selected">3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select>
+        </div>
+        <button type="submit" id="generateMidi" class="btn btn-primary">Generate new MIDI file</button>
+        <div id="loading" class="hidden">
+            <p>Generating music...</p>
+            <img src="static/images/loading.gif">
+        </div>
+
+        <button id="playMIDI" class="btn btn-secondary">Play generated.mid</button>
+        <button id="stopMIDI" class="btn btn-secondary">Stop MIDI Playback</button>
     </div>
-    <button type="submit" id="generateMidi" class="btn btn-primary">Generate new MIDI file</button>
-    <div id="loading" class="hidden">
-        <p>Generating music...</p>
-        <img src="static/images/loading.gif">
-    </div>
+    <div class="col-sm-3"></div>
 </div>
 
-<!-- ISSUE: Last midi file tends to get cached so when generating another midi the file isn't updated -->
-<button id="playMIDI" class="btn btn-secondary">Play generated.mid</button>
-<button id="stopMIDI" class="btn btn-secondary">Stop MIDI Playback</button>
 
 {% endblock %}

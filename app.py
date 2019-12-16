@@ -24,8 +24,9 @@ def generate_midi_route():
 
 @app.route('/serve-midi')
 def serve_midi():
-    ''' Serve most recently generated midi file '''
-    return send_file('generated.mid')
+    ''' Serve most recently generated midi file of given order '''
+    order = request.args['order']
+    return send_file(f'generated/generated{order}.mid')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port='5000', debug=True)

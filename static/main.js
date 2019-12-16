@@ -16,7 +16,9 @@ document.getElementById('generateMidi').addEventListener('click', function () {
 })
 
 document.getElementById('playMIDI').addEventListener('click', function () {
-    MIDIjs.play('/serve-midi?t=' + Date.now());
+    // Get midi file generated from specified order markov chain and prevent file from being cached
+    let order = document.getElementById('order').value;
+    MIDIjs.play('/serve-midi?t=' + Date.now() + '&order=' + order);
 })
 
 document.getElementById('stopMIDI').addEventListener('click', function () {
