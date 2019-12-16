@@ -1,22 +1,7 @@
 from flask import Flask, render_template, request, Response, send_file
-from model.markov_model import MarkovModel
-from mido import Message, MidiFile, MidiTrack
-from os import listdir
+from generate_midi import generate_midi
 
 app = Flask(__name__)
-
-corpus_files = (MidiFile(f'training_music/single_track/{file_name}', clip=True) for file_name in listdir('training_music/single_track'))
-
-messages = [message for f in corpus_files for message in ['START'] + f.tracks[0] + ['END']]
-
-mkv_models = [
-    MarkovModel(midi_data=messages, order=1),
-    MarkovModel(midi_data=messages, order=2),
-    MarkovModel(midi_data=messages, order=3),
-    MarkovModel(midi_data=messages, order=4),
-    MarkovModel(midi_data=messages, order=5),
-    MarkovModel(midi_data=messages, order=6)
-]
 
 @app.route('/')
 def index():
@@ -28,17 +13,7 @@ def generate_midi_route():
     ''' Generate a new midi file '''
     mkv_order = int(request.form['order'])
 
-    mkv = mkv_models[mkv_order-1]
-
-    # Type 0 single track file
-    gen_midi = MidiFile(type=0)
-    track = MidiTrack()
-    gen_midi.tracks.append(track)
-
-    for message in mkv.sample():
-        track.append(message)
-
-    gen_midi.save(f'generated/generated{mkv_order}.mid')
+    generate_midi(mkv_order=mkv_order)
 
     return Response("Finished generating new MIDI file")
 
