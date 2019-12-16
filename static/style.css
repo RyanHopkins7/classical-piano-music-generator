@@ -1,3 +1,21 @@
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+label {
+    font-size: 22px;
+}
+
+.jumbotron {
+    background-color: rgba(0,0,0,0);
+}
+
 .range-label {
     display: inline;
 }
@@ -10,6 +28,6 @@
     padding: 20px;
 }
 
-#orderForm * {
+#orderForm button, img {
     margin: 5px;
 }
