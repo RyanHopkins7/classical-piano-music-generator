@@ -1,4 +1,3 @@
-import mido
 from mido import Message, MidiFile, MidiTrack
 from model.markov_model import MarkovModel
 from os import listdir
@@ -31,5 +30,5 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         order = int(sys.argv[1])
     else:
-        order = 4
+        order = 3
     generate_midi(mkv_order=order)

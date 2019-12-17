@@ -1,9 +1,9 @@
 # Classical Piano Music Generator
 
 This application generates piano music in midi form using an nth order Markov model trained off of classical piano music.
-A Flask web app is included as a simple interface to generate musical pieces using Markov models of order 1 through 8. 
+A Flask web app is included as a simple interface to generate musical pieces using Markov models of order 1 through 6. 
 
-Composers currently in corpus data: **Chopin, Beethoven, Mozart.**
+Composers currently in corpus data: **Chopin**
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ This is a Python 3 project and requires the latest version of Python and a virtu
 
 To generate a midi file from the training music, run `generate_midi.py <order>` where order is the order of the markov model that should be used to generate the music. The resulting midi file is stored in *static/generated.mid*.
 
-To run the Flask app, run `app.py` and visit [127.0.0.1:5000](http://127.0.0.1:5000/). 
+To run the Flask app, run `app.py` and visit your localhost server. 
 
 ## License
 
