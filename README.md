@@ -26,13 +26,13 @@ This is a Python 3 project and requires the latest version of Python and a virtu
 
 1. Add multi-track midi files to *training_music/multi_track*.
 
-2. Run `merge_midi_tracks.py training_music/multi_track training_music/single_track` to merge all midi files from *training_music/multi_track* from multi track midi files to single track midi files and save them in *training_music/single_track*. It is necessary for midi files to be single track for them to be used in training the Markov model. 
+2. Run `python merge_midi_tracks.py training_music/multi_track training_music/single_track` to merge all midi files from *training_music/multi_track* from multi track midi files to single track midi files and save them in *training_music/single_track*. It is necessary for midi files to be single track for them to be used in training the Markov model. 
 
 ### Running the code
 
-To generate a midi file from the training music, run `generate_midi.py <order>` where order is the order of the markov model that should be used to generate the music. The resulting midi file is stored in *static/generated.mid*.
+To generate a midi file from the training music, run `python generate_midi.py <order>` where order is the order of the markov model that should be used to generate the music. The resulting midi file is stored in *static/generated.mid*.
 
-To run the Flask app, run `app.py` and visit your localhost server. 
+To run the Flask app, run `python app.py` and visit your localhost server. 
 
 ## License
 
